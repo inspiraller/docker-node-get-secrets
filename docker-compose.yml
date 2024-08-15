@@ -1,0 +1,17 @@
+services:
+  node-example:
+    container_name: distroless-node-dumbinit
+    ports:
+       - "80:80"
+    secrets:
+      - THEPASSWORD1
+      - THEPASSWORD2
+    build:
+      context: .
+    image: "distroless-node-dumbinit:1"
+secrets:
+  THEPASSWORD1:
+    file: ./.secrets/THEPASSWORD1
+  THEPASSWORD2:
+    file: ./.secrets/THEPASSWORD2
+
