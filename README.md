@@ -20,6 +20,13 @@ or
 2. `docker run --name distroless-getsecret -v "./.secrets:/run/secrets:ro"  -p 80:80 distroless-getsecret:1`
 expect stdout of  mypassword1
 
+
+# Troubleshoot: Discover if /run/secrets exist
+1. `docker exec -it distroless-getsecret sh`
+2. `cd /run && ls`
+adduser  lock
+No secrets folder exists!!
+
 --------------------------
 # kill
 - `docker-compose down`

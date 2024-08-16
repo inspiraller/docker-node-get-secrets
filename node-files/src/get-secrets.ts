@@ -25,8 +25,9 @@ export const getSecrets = (
   return parsed;
 };
 
-const env = getSecrets(['THEPASSWORD1', 'THEPASSWORD2'])
 
-console.log('NODE_ENV =', process.env.NODE_ENV); 
-console.log('process.env.THEPASSWORD1=', process.env.THEPASSWORD1); // expect undefined
-console.log("parsed THEPASSWORD1=", env.THEPASSWORD1); // expect value 
+// const env = getSecrets(['THEPASSWORD1', 'THEPASSWORD2'])
+
+// console.log('NODE_ENV =', process.env.NODE_ENV); 
+// console.log('process.env.THEPASSWORD1=', process.env.THEPASSWORD1); // expect undefined
+// console.log("parsed THEPASSWORD1=", env.THEPASSWORD1); // expect value 
