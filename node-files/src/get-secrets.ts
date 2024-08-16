@@ -12,6 +12,7 @@ export const getSecrets = (
   const parsed: SecretsObj = {};
   arr.forEach((item) => {
     try {
+      console.log(`try to get file = ${secretPath}${item}`);
       parsed[item] = fs.readFileSync(`${secretPath}${item}`, {
         encoding: "utf8",
       });

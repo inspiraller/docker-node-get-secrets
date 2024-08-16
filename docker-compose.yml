@@ -1,6 +1,6 @@
 services:
   node-example:
-    container_name: distroless-node-dumbinit
+    container_name: distroless-getsecret
     ports:
        - "80:80"
     secrets:
@@ -8,7 +8,7 @@ services:
       - THEPASSWORD2
     build:
       context: .
-    image: "distroless-node-dumbinit:1"
+    image: "distroless-getsecret:1"
 secrets:
   THEPASSWORD1:
     file: ./.secrets/THEPASSWORD1

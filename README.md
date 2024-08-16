@@ -11,16 +11,21 @@ expect stdout of  mypassword1
 
 
 ## 3. TEST VIA  docker build
-1. `docker build -t distroless-node-dumbinit:1 --secret id=THEPASSWORD1,src=./.secrets/THEPASSWORD1 --secret id=THEPASSWORD2,src=./.secrets/THEPASSWORD2 --no-cache .`
-2. `docker run --name distroless-node-dumbinit -p 80:80 distroless-node-dumbinit:1`
+# :ro means read_only: true
+# Note that the folder is then read-only in the container and read-write on the host.
+# - https://docs.docker.com/engine/storage/bind-mounts/
+1. `docker build -t distroless-getsecret:1 --no-cache .`
+2. `docker run --name distroless-getsecret -v "${PWD}/.secrets:/run/secrets:ro"  -p 80:80 distroless-getsecret:1`
+or 
+2. `docker run --name distroless-getsecret -v "./.secrets:/run/secrets:ro"  -p 80:80 distroless-getsecret:1`
 expect stdout of  mypassword1
 
 --------------------------
 # kill
 - `docker-compose down`
-- `docker stop distroless-node-dumbinit`
-- `docker rm distroless-node-dumbinit`
-- `docker image rm distroless-node-dumbinit:1`
+- `docker stop distroless-getsecret`
+- `docker rm distroless-getsecret`
+- `docker image rm distroless-getsecret:1`
 - `docker system prune`
 
 
